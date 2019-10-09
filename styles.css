@@ -20,20 +20,31 @@ body {
 .page {
     background-color: white;
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     height: 100vh;
     width: 100%;
 }
 
 .block_left {
     display: flex;
-    width: 50%;
+    width: 100%;
     background-image: url("img/box_left.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    align-items: flex-end;
     justify-content: center;
+}
+
+.block_right {
+    display: grid;
+    grid-template-rows: 1fr 30px;
+    width: 100%;
+    max-height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: linear-gradient(rgb(216, 216, 216), rgb(219, 218, 218));
+    
 }
 
 .block_contact {
@@ -41,7 +52,7 @@ body {
     font-family: 'Lato', sans-serif;
     background-color: rgb(77, 111, 111);
     width: 100%;
-    height: 3%;
+    height: 100%;
     
     justify-content: center;
     align-items: center;
@@ -53,50 +64,56 @@ body {
 }
 
 
-.block_right {
+
+
+.block_about {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    max-height: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    background-image: linear-gradient(rgb(216, 216, 216), rgb(219, 218, 218));
-    
+    height: 100%;
+    padding: 30px 0;
 }
 
 .block_info {
-    padding: 20px 100px;
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+    justify-items: stretch;
+    align-items: center; 
+    padding: 2% 10%;
     width: 100%;
-    height: 97%;
+    height: 100%;
     text-align: left;
-    align-items: center;
-    justify-content: center;
+
 }
 
 .block_info h1 {
-    font-size: 5.1rem;
+
+}
+
+p.company_name {
+    font-weight: 100;
+    font-size: 48px;
     padding: 0;
     margin: 0;
 }
 
-.block_info h4 {
+.sub_heading {
     font-family: 'Lato', sans-serif;
     margin: 0;
-    font-size: 2.5rem;
+    padding: 10px 0;
+    font-size: 24px;
 }
 
-.partners h3 {
-    font-family: 'Lato', sans-serif;
-    margin-bottom: 12px;
-}
+
+
 
 .title {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    margin-top: 12vh;
-    margin-bottom: 50px;
+    justify-content: end;
+    height: 100%;
 }
+
 
 .company_name::after {
     content: "";
@@ -104,7 +121,7 @@ body {
     background-color: rgb(81, 111, 111);
     height: 5px;
     width: 100%;
-    margin-top: -0.7rem;
+    margin-top: -1.4rem;
 }
 
 .font_roboto {
@@ -121,21 +138,22 @@ body {
 
 
 .grid {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    height: 300px;
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+
+    
+
 }
 
 .offer_item {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 50%;
-    width: 33.3%;
+    height: 140px;
+    width: 100%;
 
     text-align: center;
  
@@ -168,23 +186,22 @@ body {
     }
 
 .offer_item p {
-    font-size: 1rem;
+    font-size: 10px;
 }
 
 .offer_item i {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .partners {
-
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: end;
     align-items: center;
+    padding: 20px 0;
 }
 
-.partners h3 {
-    margin: 30px 0;
-}
 
 .partners_images {
     display: flex;
@@ -192,6 +209,10 @@ body {
     justify-content: space-between;
     width: 100%;
     height: 50px;
+}
+
+.partners h4 {
+    padding-bottom: 40px;
 }
 
 .partner_1 {
@@ -219,24 +240,56 @@ body {
     background-position: center;
 }
 
+.small_contact {
+    display: none;
+}
 
-@media only screen and (max-width: 768px) {
-    .page {
-        flex-direction: column;
-        max-height: 100%;
-    }
-    .block_left {
-        width: 100%;
-        height: 20vh;
-    }
-    .block_right {
-        width: 100%;
-        
-    }
+.no_margin {
+    margin: 0;
+}
+@media only screen and (max-width: 1024px) {
     .block_info {
-        padding: 20px;
+        grid-template-rows: 130px  1fr 150px;
+    } 
+}
+
+@media only screen and (max-width: 800px) {
+    .page {
+        grid-template-columns: 100%;
+        grid-template-rows: 100px 1fr;
+
     }
-    .title {
-        margin: 10px 0;
+
+}
+
+@media only screen and (max-width: 500px) {
+    .block_info {
+        padding: 5px 10px;
+    }
+    .grid {
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+    }
+
+    .big_contact {
+        display: none;
+    }
+
+    .small_contact {
+        display: block;
+    }
+    .offer_item {
+        height: 100px;
+    }
+    .offer_item p {
+        font-size: 12px;
+    }
+
+    .block_about {
+        padding-bottom: 0;
+    }
+    
+    .offer_item i {
+        font-size: 3.5rem;
     }
 }
